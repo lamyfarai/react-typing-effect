@@ -1,0 +1,31 @@
+{
+  "name": "react-typing-effect",
+  "version": "0.1.0",
+  "description": "Simulates typing effect, eraser effect and blinking cursor.",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "babel lib -d build",
+    "prepublish": "npm run build",
+    "build:watch": "babel lib -w -d build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lamyfarai/react-typing-effect.git"
+  },
+  "author": "L.Farai Matare <lameckfarai@gmail.com> (http://lameckmatare.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lamyfarai/react-typing-effect/issues"
+  },
+  "homepage": "https://github.com/lamyfarai/react-typing-effect#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-es2015-spread": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
