@@ -6,8 +6,8 @@ import './styles/index.scss';
 
 const ReactTypingEffectDemo = () => {
   return (
-    <div>
-      <ReactTypingEffect text="Hello." />
+    <div className="container">
+      <ReactTypingEffect text={["Hello.", "World!!!"]} />
     </div>
   );
 };

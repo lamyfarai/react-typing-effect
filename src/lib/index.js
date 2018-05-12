@@ -15,14 +15,21 @@ export default class TypingEffect extends Component {
     this.getRawText = this.getRawText.bind(this);
     this.type = this.type.bind(this);
     this.erase = this.erase.bind(this);
+    this.startTyping = this.startTyping.bind(this);
   }
 
   componentDidMount() {
-    this.type();
+    this.startTyping();
   }
 
   componentWillUnmount() {
     this._timeout && clearTimeout(this._timeout);
+  }
+
+  startTyping() {
+    this.timeout = setTimeout(() => {
+      this.type();
+    }, this.props.typingDelay);
   }
 
   getRawText() {
@@ -53,7 +60,7 @@ export default class TypingEffect extends Component {
       const textArray = this.getRawText();
       index = (index+1) === textArray.length ? 0 : index+1;
       this.setState({ index }, () => {
-        this.type();
+        this.startTyping();
       });
     } else {
       displayText = displayText.substr(-displayText.length, (displayText.length-1));
@@ -68,6 +75,7 @@ export default class TypingEffect extends Component {
   render() {
     const {
       speed,
+      typingDelay,
       eraseDelay,
       staticText,
       text,
@@ -97,12 +105,14 @@ export default class TypingEffect extends Component {
 }
 
 TypingEffect.defaultProps = {
-  speed: 250,
-  eraseDelay: 5000
+  speed: 200,
+  eraseDelay: 5000,
+  typingDelay: 2500
 };
 
 TypingEffect.propTypes = {
   speed: PropTypes.number.isRequired,
+  typingDelay: PropTypes.number.isRequired,
   eraseDelay: PropTypes.number.isRequired,
   staticText: PropTypes.string,
   text: PropTypes.oneOfType([PropTypes.array, PropTypes.string]).isRequired,
