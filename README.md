@@ -6,7 +6,7 @@ This is a UI component built completely in React that simulates typing effect, e
 
 ## Demo
 
-See the demo here: [lameckmatare.com/react-typing-effect]
+See the demo here: https://lameckmatare.com/react-typing-effect
 
 ## Getting Started
 
@@ -30,3 +30,21 @@ const ReactTypingEffectDemo = () => {
 ```
 
 ## Motivation
+
+Inspired by this blog post
+http://burnmind.com/tutorials/how-to-create-a-typing-effect-an-eraser-effect-and-a-blinking-cursor-using-jquery
+
+## API
+
+### Required Props
+
+  * `text`: That text that will be typed and erased. Can be either an `array` of strings or just a `string`.
+
+### Other Props
+
+  * `staticText`: `String`. Text that will just be static and cannot be typed or erased.
+  * `className`: `String`
+  * `speed`: `Number`. default `500`ms. Typing speed.
+  * `eraseDelay`: `Number`. default `5000`ms. Time to wait before erasing the text
+  *  `cursor`: `String`. Default: `|`
+  * `cursorClassName`: `String`
