@@ -8,6 +8,8 @@ This is a UI component built completely in React that simulates typing effect, e
 
 See the demo here: https://lameckmatare.com/react-typing-effect
 
+[![Screenshot 1](https://ucassets.blob.core.windows.net/uploads/rte.png)][react-rte-demo]
+
 ## Getting Started
 
   $ npm install --save react-typing-effect
