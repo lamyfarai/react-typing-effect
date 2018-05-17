@@ -4,7 +4,7 @@ This is a UI component built completely in React that simulates typing effect, e
 
 ## Demo
 
-![Alt text](https://github.com/lamyfarai/react-typing-effect/screenshot.gif?raw=true "Optional Title")
+[![Screenshot 1](https://raw.githubusercontent.com/lamyfarai/react-typing-effect/master/screenshot.gif)]
 
 ## Getting Started
 
