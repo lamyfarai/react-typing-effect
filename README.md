@@ -8,7 +8,7 @@ This is a UI component built completely in React that simulates typing effect, e
 
 ## Getting Started
 
-  $ npm install --save react-typing-effect
+  `$ npm install --save react-typing-effect`
 
 `ReactTypingEffect` is the main component.
 
