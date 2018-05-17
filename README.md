@@ -1,14 +1,10 @@
 # React Typing Effect
 
-![Build Status](https://travis-ci.org/sstur/react-rte.svg?branch=master)
-
 This is a UI component built completely in React that simulates typing effect, eraser effect and a blinking cursor.
 
 ## Demo
 
-See the demo here: https://lameckmatare.com/react-typing-effect
-
-[![Screenshot 1](https://ucassets.blob.core.windows.net/uploads/rte.png)][react-rte-demo]
+[![Screenshot 1](https://lh5.googleusercontent.com/VOpPnPmX0ny0euOEnQoRLfkL9s8Vp0pte5v-Y7EW6Hz6MLtOLHxK9gMhsp_N0VyGpc-wzmxuKw8lVzO521EY=w1366-h622-rw)]
 
 ## Getting Started
 
