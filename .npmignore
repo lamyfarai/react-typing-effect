@@ -1,4 +1,8 @@
 .babelrc
-lib
+.eslintrc
+postcss.config.js
+webpack.config.js
+src
+tools
 CODE_OF_CONDUCT.md
-_tests
+screenshot.gif
