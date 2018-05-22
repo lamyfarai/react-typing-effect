@@ -1,6 +1,6 @@
 {
   "name": "react-typing-effect",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simulates typing effect, eraser effect and blinking cursor.",
   "main": "build/index.js",
   "scripts": {
