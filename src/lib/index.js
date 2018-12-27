@@ -27,7 +27,7 @@ export default class TypingEffect extends Component {
   }
 
   startTyping() {
-    this.timeout = setTimeout(() => {
+    this._timeout = setTimeout(() => {
       this.type();
     }, this.props.typingDelay);
   }
