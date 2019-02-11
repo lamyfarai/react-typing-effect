@@ -1,18 +1,16 @@
 {
   "name": "react-typing-effect",
-  "version": "1.0.6",
+  "version": "2.0.1",
   "description": "Simulates typing effect, eraser effect and blinking cursor.",
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "start": "babel-node _server/server.js",
+    "clean-dist": "npm run remove-dist && mkdir dist",
+    "remove-dist": "node_modules/.bin/rimraf ./dist",
+    "prebuild": "npm-run-all clean-dist",
+    "build": "babel src/lib -d dist",
     "prepublish": "npm run build",
-    "build": "babel src/lib -d build",
-    "build:watch": "babel src/lib -w -d build",
-    "start-server": "babel-node tools/server.js",
-    "lint": "node_modules/.bin/esw webpack.config.* tools src",
-    "lint:watch": "npm run lint -- --watch",
-    "test": "mocha --reporter spec tools/testSetup.js \"src/_tests/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch",
-    "start": "npm-run-all --parallel build:watch test:watch start-server lint:watch"
+    "dist": "babel-node _server/server.dist.js"
   },
   "repository": {
     "type": "git",
@@ -39,6 +37,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
+    "compression": "^1.7.3",
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",
     "eslint": "^4.14.0",
