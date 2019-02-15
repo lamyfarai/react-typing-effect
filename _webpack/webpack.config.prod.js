@@ -16,9 +16,11 @@ export default {
   target: 'web',
   entry: {
     index: path.resolve(__dirname, '../src/lib/index.js'),
-    demo: path.resolve(__dirname, '../src/index.js')
+    // demo: path.resolve(__dirname, '../src/index.js')
   },
   output: {
+    library: 'react-typing-effect',
+    libraryTarget: 'umd',
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
     filename: '[name].js'

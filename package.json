@@ -1,6 +1,6 @@
 {
   "name": "react-typing-effect",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Simulates typing effect, eraser effect and blinking cursor.",
   "main": "dist/index.js",
   "scripts": {
@@ -8,9 +8,8 @@
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "node_modules/.bin/rimraf ./dist",
     "prebuild": "npm-run-all clean-dist",
-    "build": "babel src/lib -d dist",
-    "prepublish": "npm run build",
-    "dist": "babel-node _server/server.dist.js"
+    "build": "babel-node _tools/build.js",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",

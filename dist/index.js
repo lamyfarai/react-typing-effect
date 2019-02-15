@@ -1,229 +1,25 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _index = require('C:\\Users\\matar\\Workbench\\react-typing-effect\\node_modules\\redbox-react\\lib\\index.js');
-
-var _index2 = _interopRequireDefault(_index);
-
-var _index3 = require('C:\\Users\\matar\\Workbench\\react-typing-effect\\node_modules\\react-transform-catch-errors\\lib\\index.js');
-
-var _index4 = _interopRequireDefault(_index3);
-
-var _react2 = require('react');
-
-var _react3 = _interopRequireDefault(_react2);
-
-var _index5 = require('C:\\Users\\matar\\Workbench\\react-typing-effect\\node_modules\\react-transform-hmr\\lib\\index.js');
-
-var _index6 = _interopRequireDefault(_index5);
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _Cursor = require('./Cursor');
-
-var _Cursor2 = _interopRequireDefault(_Cursor);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _components = {
-  TypingEffect: {
-    displayName: 'TypingEffect'
-  }
-};
-
-var _CUsersMatarWorkbenchReactTypingEffectNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
-  filename: 'src/lib/index.js',
-  components: _components,
-  locals: [module],
-  imports: [_react3.default]
-});
-
-var _CUsersMatarWorkbenchReactTypingEffectNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
-  filename: 'src/lib/index.js',
-  components: _components,
-  locals: [],
-  imports: [_react3.default, _index2.default]
-});
-
-function _wrapComponent(id) {
-  return function (Component) {
-    return _CUsersMatarWorkbenchReactTypingEffectNode_modulesReactTransformHmrLibIndexJs2(_CUsersMatarWorkbenchReactTypingEffectNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
-  };
-}
-
-var TypingEffect = _wrapComponent('TypingEffect')(function (_Component) {
-  _inherits(TypingEffect, _Component);
-
-  function TypingEffect(props) {
-    _classCallCheck(this, TypingEffect);
-
-    var _this = _possibleConstructorReturn(this, (TypingEffect.__proto__ || Object.getPrototypeOf(TypingEffect)).call(this, props));
-
-    _this.state = {
-      index: 0,
-      displayText: ""
-    };
-    _this.getRawText = _this.getRawText.bind(_this);
-    _this.type = _this.type.bind(_this);
-    _this.erase = _this.erase.bind(_this);
-    _this.startTyping = _this.startTyping.bind(_this);
-    return _this;
-  }
-
-  _createClass(TypingEffect, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.startTyping();
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this._timeout && clearTimeout(this._timeout);
-    }
-  }, {
-    key: 'startTyping',
-    value: function startTyping() {
-      var _this2 = this;
-
-      this._timeout = setTimeout(function () {
-        _this2.type();
-      }, this.props.typingDelay);
-    }
-  }, {
-    key: 'getRawText',
-    value: function getRawText() {
-      var text = this.props.text;
-
-      return typeof text === "string" ? [text] : [].concat(_toConsumableArray(text));
-    }
-  }, {
-    key: 'type',
-    value: function type() {
-      var _this3 = this;
-
-      var _state = this.state,
-          index = _state.index,
-          displayText = _state.displayText;
-
-      var text = this.getRawText()[index];
-      if (text.length > displayText.length) {
-        displayText = text.substr(0, displayText.length + 1);
-        this.setState({ displayText: displayText }, function () {
-          _this3._timeout = setTimeout(function () {
-            _this3.type();
-          }, _this3.props.speed);
-        });
-      } else {
-        this._timeout = setTimeout(function () {
-          _this3.erase();
-        }, this.props.eraseDelay);
-      }
-    }
-  }, {
-    key: 'erase',
-    value: function erase() {
-      var _this4 = this;
-
-      var _state2 = this.state,
-          index = _state2.index,
-          displayText = _state2.displayText;
-
-      if (displayText.length === 0) {
-        var textArray = this.getRawText();
-        index = index + 1 === textArray.length ? 0 : index + 1;
-        this.setState({ index: index }, function () {
-          _this4.startTyping();
-        });
-      } else {
-        displayText = displayText.substr(-displayText.length, displayText.length - 1);
-        this.setState({ displayText: displayText }, function () {
-          _this4._timeout = setTimeout(function () {
-            _this4.erase();
-          }, _this4.props.speed);
-        });
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          speed = _props.speed,
-          typingDelay = _props.typingDelay,
-          eraseDelay = _props.eraseDelay,
-          staticText = _props.staticText,
-          text = _props.text,
-          className = _props.className,
-          cursor = _props.cursor,
-          cursorClassName = _props.cursorClassName,
-          otherProps = _objectWithoutProperties(_props, ['speed', 'typingDelay', 'eraseDelay', 'staticText', 'text', 'className', 'cursor', 'cursorClassName']);
-
-      var displayText = this.state.displayText;
-
-      var classes = (0, _classnames2.default)(className, 'lfm__typing_effect');
-      return _react3.default.createElement(
-        'div',
-        _extends({}, otherProps, { className: classes }),
-        staticText ? _react3.default.createElement(
-          'span',
-          { className: 'lfm__typing_effect_static_text' },
-          staticText,
-          '\xA0'
-        ) : null,
-        _react3.default.createElement(
-          'span',
-          { className: 'lfm__typing_effect_text' },
-          displayText
-        ),
-        _react3.default.createElement(_Cursor2.default, {
-          cursor: cursor,
-          cursorClassName: cursorClassName
-        })
-      );
-    }
-  }]);
-
-  return TypingEffect;
-}(_react2.Component));
-
-exports.default = TypingEffect;
-
-
-TypingEffect.defaultProps = {
-  speed: 200,
-  eraseDelay: 5000,
-  typingDelay: 2500
-};
-
-TypingEffect.propTypes = {
-  speed: _propTypes2.default.number.isRequired,
-  typingDelay: _propTypes2.default.number.isRequired,
-  eraseDelay: _propTypes2.default.number.isRequired,
-  staticText: _propTypes2.default.string,
-  text: _propTypes2.default.oneOfType([_propTypes2.default.array, _propTypes2.default.string]).isRequired,
-  className: _propTypes2.default.string,
-  cursor: _propTypes2.default.string,
-  cursorClassName: _propTypes2.default.string
-};
+!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["react-typing-effect"]=t():e["react-typing-effect"]=t()}(window,function(){return function(e){var t={};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}return r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},r.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)r.d(n,o,function(t){return e[t]}.bind(null,o));return n},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="/",r(r.s=3)}([function(e,t,r){"use strict";e.exports=r(4)},function(e,t,r){e.exports=r(6)()},function(e,t,r){var n;
+/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+!function(){"use strict";var r={}.hasOwnProperty;function o(){for(var e=[],t=0;t<arguments.length;t++){var n=arguments[t];if(n){var u=typeof n;if("string"===u||"number"===u)e.push(n);else if(Array.isArray(n)&&n.length){var i=o.apply(null,n);i&&e.push(i)}else if("object"===u)for(var a in n)r.call(n,a)&&n[a]&&e.push(a)}}return e.join(" ")}e.exports?(o.default=o,e.exports=o):void 0===(n=function(){return o}.apply(t,[]))||(e.exports=n)}()},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n])}return e},o=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),u=r(0),i=l(u),a=l(r(1)),c=l(r(2)),s=l(r(8));function l(e){return e&&e.__esModule?e:{default:e}}var f=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var r=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return r.state={index:0,displayText:""},r.getRawText=r.getRawText.bind(r),r.type=r.type.bind(r),r.erase=r.erase.bind(r),r.startTyping=r.startTyping.bind(r),r}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,u.Component),o(t,[{key:"componentDidMount",value:function(){this.startTyping()}},{key:"componentWillUnmount",value:function(){this._timeout&&clearTimeout(this._timeout)}},{key:"startTyping",value:function(){var e=this;this._timeout=setTimeout(function(){e.type()},this.props.typingDelay)}},{key:"getRawText",value:function(){var e=this.props.text;return"string"==typeof e?[e]:[].concat(function(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}(e))}},{key:"type",value:function(){var e=this,t=this.state,r=t.index,n=t.displayText,o=this.getRawText()[r];o.length>n.length?(n=o.substr(0,n.length+1),this.setState({displayText:n},function(){e._timeout=setTimeout(function(){e.type()},e.props.speed)})):this._timeout=setTimeout(function(){e.erase()},this.props.eraseDelay)}},{key:"erase",value:function(){var e=this,t=this.state,r=t.index,n=t.displayText;0===n.length?(r=r+1===this.getRawText().length?0:r+1,this.setState({index:r},function(){e.startTyping()})):(n=n.substr(-n.length,n.length-1),this.setState({displayText:n},function(){e._timeout=setTimeout(function(){e.erase()},e.props.speed)}))}},{key:"render",value:function(){var e=this.props,t=(e.speed,e.typingDelay,e.eraseDelay,e.staticText),r=(e.text,e.className),o=e.cursor,u=e.cursorClassName,a=function(e,t){var r={};for(var n in e)t.indexOf(n)>=0||Object.prototype.hasOwnProperty.call(e,n)&&(r[n]=e[n]);return r}(e,["speed","typingDelay","eraseDelay","staticText","text","className","cursor","cursorClassName"]),l=this.state.displayText,f=(0,c.default)(r,"lfm__typing_effect");return i.default.createElement("div",n({},a,{className:f}),t?i.default.createElement("span",{className:"lfm__typing_effect_static_text"},t," "):null,i.default.createElement("span",{className:"lfm__typing_effect_text"},l),i.default.createElement(s.default,{cursor:o,cursorClassName:u}))}}]),t}();t.default=f,f.defaultProps={speed:200,eraseDelay:5e3,typingDelay:2500},f.propTypes={speed:a.default.number.isRequired,typingDelay:a.default.number.isRequired,eraseDelay:a.default.number.isRequired,staticText:a.default.string,text:a.default.oneOfType([a.default.array,a.default.string]).isRequired,className:a.default.string,cursor:a.default.string,cursorClassName:a.default.string}},function(e,t,r){"use strict";
+/** @license React v16.8.2
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */var n=r(5),o="function"==typeof Symbol&&Symbol.for,u=o?Symbol.for("react.element"):60103,i=o?Symbol.for("react.portal"):60106,a=o?Symbol.for("react.fragment"):60107,c=o?Symbol.for("react.strict_mode"):60108,s=o?Symbol.for("react.profiler"):60114,l=o?Symbol.for("react.provider"):60109,f=o?Symbol.for("react.context"):60110,p=o?Symbol.for("react.concurrent_mode"):60111,y=o?Symbol.for("react.forward_ref"):60112,d=o?Symbol.for("react.suspense"):60113,h=o?Symbol.for("react.memo"):60115,m=o?Symbol.for("react.lazy"):60116,v="function"==typeof Symbol&&Symbol.iterator;function b(e){for(var t=arguments.length-1,r="https://reactjs.org/docs/error-decoder.html?invariant="+e,n=0;n<t;n++)r+="&args[]="+encodeURIComponent(arguments[n+1]);!function(e,t,r,n,o,u,i,a){if(!e){if(e=void 0,void 0===t)e=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var c=[r,n,o,u,i,a],s=0;(e=Error(t.replace(/%s/g,function(){return c[s++]}))).name="Invariant Violation"}throw e.framesToPop=1,e}}(!1,"Minified React error #"+e+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",r)}var g={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},_={};function O(e,t,r){this.props=e,this.context=t,this.refs=_,this.updater=r||g}function x(){}function j(e,t,r){this.props=e,this.context=t,this.refs=_,this.updater=r||g}O.prototype.isReactComponent={},O.prototype.setState=function(e,t){"object"!=typeof e&&"function"!=typeof e&&null!=e&&b("85"),this.updater.enqueueSetState(this,e,t,"setState")},O.prototype.forceUpdate=function(e){this.updater.enqueueForceUpdate(this,e,"forceUpdate")},x.prototype=O.prototype;var w=j.prototype=new x;w.constructor=j,n(w,O.prototype),w.isPureReactComponent=!0;var T={current:null},S={current:null},P=Object.prototype.hasOwnProperty,k={key:!0,ref:!0,__self:!0,__source:!0};function C(e,t,r){var n=void 0,o={},i=null,a=null;if(null!=t)for(n in void 0!==t.ref&&(a=t.ref),void 0!==t.key&&(i=""+t.key),t)P.call(t,n)&&!k.hasOwnProperty(n)&&(o[n]=t[n]);var c=arguments.length-2;if(1===c)o.children=r;else if(1<c){for(var s=Array(c),l=0;l<c;l++)s[l]=arguments[l+2];o.children=s}if(e&&e.defaultProps)for(n in c=e.defaultProps)void 0===o[n]&&(o[n]=c[n]);return{$$typeof:u,type:e,key:i,ref:a,props:o,_owner:S.current}}function E(e){return"object"==typeof e&&null!==e&&e.$$typeof===u}var R=/\/+/g,$=[];function M(e,t,r,n){if($.length){var o=$.pop();return o.result=e,o.keyPrefix=t,o.func=r,o.context=n,o.count=0,o}return{result:e,keyPrefix:t,func:r,context:n,count:0}}function D(e){e.result=null,e.keyPrefix=null,e.func=null,e.context=null,e.count=0,10>$.length&&$.push(e)}function N(e,t,r){return null==e?0:function e(t,r,n,o){var a=typeof t;"undefined"!==a&&"boolean"!==a||(t=null);var c=!1;if(null===t)c=!0;else switch(a){case"string":case"number":c=!0;break;case"object":switch(t.$$typeof){case u:case i:c=!0}}if(c)return n(o,t,""===r?"."+A(t,0):r),1;if(c=0,r=""===r?".":r+":",Array.isArray(t))for(var s=0;s<t.length;s++){var l=r+A(a=t[s],s);c+=e(a,l,n,o)}else if(l=null===t||"object"!=typeof t?null:"function"==typeof(l=v&&t[v]||t["@@iterator"])?l:null,"function"==typeof l)for(t=l.call(t),s=0;!(a=t.next()).done;)c+=e(a=a.value,l=r+A(a,s++),n,o);else"object"===a&&b("31","[object Object]"==(n=""+t)?"object with keys {"+Object.keys(t).join(", ")+"}":n,"");return c}(e,"",t,r)}function A(e,t){return"object"==typeof e&&null!==e&&null!=e.key?function(e){var t={"=":"=0",":":"=2"};return"$"+(""+e).replace(/[=:]/g,function(e){return t[e]})}(e.key):t.toString(36)}function I(e,t){e.func.call(e.context,t,e.count++)}function q(e,t,r){var n=e.result,o=e.keyPrefix;e=e.func.call(e.context,t,e.count++),Array.isArray(e)?U(e,n,r,function(e){return e}):null!=e&&(E(e)&&(e=function(e,t){return{$$typeof:u,type:e.type,key:t,ref:e.ref,props:e.props,_owner:e._owner}}(e,o+(!e.key||t&&t.key===e.key?"":(""+e.key).replace(R,"$&/")+"/")+r)),n.push(e))}function U(e,t,r,n,o){var u="";null!=r&&(u=(""+r).replace(R,"$&/")+"/"),N(e,q,t=M(t,u,n,o)),D(t)}function L(){var e=T.current;return null===e&&b("307"),e}var W={Children:{map:function(e,t,r){if(null==e)return e;var n=[];return U(e,n,null,t,r),n},forEach:function(e,t,r){if(null==e)return e;N(e,I,t=M(null,null,t,r)),D(t)},count:function(e){return N(e,function(){return null},null)},toArray:function(e){var t=[];return U(e,t,null,function(e){return e}),t},only:function(e){return E(e)||b("143"),e}},createRef:function(){return{current:null}},Component:O,PureComponent:j,createContext:function(e,t){return void 0===t&&(t=null),(e={$$typeof:f,_calculateChangedBits:t,_currentValue:e,_currentValue2:e,_threadCount:0,Provider:null,Consumer:null}).Provider={$$typeof:l,_context:e},e.Consumer=e},forwardRef:function(e){return{$$typeof:y,render:e}},lazy:function(e){return{$$typeof:m,_ctor:e,_status:-1,_result:null}},memo:function(e,t){return{$$typeof:h,type:e,compare:void 0===t?null:t}},useCallback:function(e,t){return L().useCallback(e,t)},useContext:function(e,t){return L().useContext(e,t)},useEffect:function(e,t){return L().useEffect(e,t)},useImperativeHandle:function(e,t,r){return L().useImperativeHandle(e,t,r)},useDebugValue:function(){},useLayoutEffect:function(e,t){return L().useLayoutEffect(e,t)},useMemo:function(e,t){return L().useMemo(e,t)},useReducer:function(e,t,r){return L().useReducer(e,t,r)},useRef:function(e){return L().useRef(e)},useState:function(e){return L().useState(e)},Fragment:a,StrictMode:c,Suspense:d,createElement:C,cloneElement:function(e,t,r){null==e&&b("267",e);var o=void 0,i=n({},e.props),a=e.key,c=e.ref,s=e._owner;if(null!=t){void 0!==t.ref&&(c=t.ref,s=S.current),void 0!==t.key&&(a=""+t.key);var l=void 0;for(o in e.type&&e.type.defaultProps&&(l=e.type.defaultProps),t)P.call(t,o)&&!k.hasOwnProperty(o)&&(i[o]=void 0===t[o]&&void 0!==l?l[o]:t[o])}if(1===(o=arguments.length-2))i.children=r;else if(1<o){l=Array(o);for(var f=0;f<o;f++)l[f]=arguments[f+2];i.children=l}return{$$typeof:u,type:e.type,key:a,ref:c,props:i,_owner:s}},createFactory:function(e){var t=C.bind(null,e);return t.type=e,t},isValidElement:E,version:"16.8.2",unstable_ConcurrentMode:p,unstable_Profiler:s,__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentDispatcher:T,ReactCurrentOwner:S,assign:n}},F={default:W},V=F&&W||F;e.exports=V.default||V},function(e,t,r){"use strict";
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/var n=Object.getOwnPropertySymbols,o=Object.prototype.hasOwnProperty,u=Object.prototype.propertyIsEnumerable;e.exports=function(){try{if(!Object.assign)return!1;var e=new String("abc");if(e[5]="de","5"===Object.getOwnPropertyNames(e)[0])return!1;for(var t={},r=0;r<10;r++)t["_"+String.fromCharCode(r)]=r;if("0123456789"!==Object.getOwnPropertyNames(t).map(function(e){return t[e]}).join(""))return!1;var n={};return"abcdefghijklmnopqrst".split("").forEach(function(e){n[e]=e}),"abcdefghijklmnopqrst"===Object.keys(Object.assign({},n)).join("")}catch(e){return!1}}()?Object.assign:function(e,t){for(var r,i,a=function(e){if(null==e)throw new TypeError("Object.assign cannot be called with null or undefined");return Object(e)}(e),c=1;c<arguments.length;c++){for(var s in r=Object(arguments[c]))o.call(r,s)&&(a[s]=r[s]);if(n){i=n(r);for(var l=0;l<i.length;l++)u.call(r,i[l])&&(a[i[l]]=r[i[l]])}}return a}},function(e,t,r){"use strict";var n=r(7);function o(){}function u(){}u.resetWarningCache=o,e.exports=function(){function e(e,t,r,o,u,i){if(i!==n){var a=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw a.name="Invariant Violation",a}}function t(){return e}e.isRequired=e;var r={array:e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,elementType:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t,checkPropTypes:u,resetWarningCache:o};return r.PropTypes=r,r}},function(e,t,r){"use strict";e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),o=r(0),u=c(o),i=c(r(1)),a=c(r(2));function c(e){return e&&e.__esModule?e:{default:e}}var s=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var r=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return r.state={display:!0},r.animateCursor=r.animateCursor.bind(r),r}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,o.Component),n(t,[{key:"componentDidMount",value:function(){this.animateCursor()}},{key:"componentWillUnmount",value:function(){this._interval&&clearInterval(this._interval)}},{key:"animateCursor",value:function(){var e=this;this._interval=setInterval(function(){e.setState({display:!e.state.display})},500)}},{key:"render",value:function(){var e=this.props,t=e.cursorClassName,r=e.cursor,n=this.state.display;(0,a.default)(t,"lfm__typing_effect_cursor");return u.default.createElement("span",{style:l(n)},r||"|")}}]),t}();t.default=s;var l=function(){return{MsTransition:"opacity 0.5s",WebkitTransition:"opacity 0.5s",MozTransition:"opacity 0.5s",transition:"opacity 0.5s",opacity:!(arguments.length>0&&void 0!==arguments[0])||arguments[0]?1:0}};s.propTypes={cursor:i.default.string,cursorClassName:i.default.string}}])});

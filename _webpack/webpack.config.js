@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'path';
 import webpack from 'webpack';
-import modules from './modules';
 import loaders from './loaders';
 
 export default {
@@ -22,6 +21,8 @@ export default {
     ]
   },
   output: {
+    library: 'react-typing-effect',
+    libraryTarget: 'umd',
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
     filename: '[name].js'
