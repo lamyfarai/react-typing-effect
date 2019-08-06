@@ -31,7 +31,7 @@ export default class Cursor extends Component {
     const { display } = this.state;
     const classes = cx(cursorClassName, 'lfm__typing_effect_cursor');
     return (
-      <span style={getStyles(display)}>
+      <span className={classes} style={getStyles(display)}>
         {cursor || "|"}
       </span>
     );
