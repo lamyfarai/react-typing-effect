@@ -87,7 +87,7 @@ export default class TypingEffect extends Component {
     const { displayText } = this.state;
     const classes = cx(className, 'lfm__typing_effect');
     return (
-      <div {...otherProps} className={classes}>
+      <span {...otherProps} className={classes}>
         {staticText ?
           <span className="lfm__typing_effect_static_text">
             {staticText}&nbsp;
@@ -99,7 +99,7 @@ export default class TypingEffect extends Component {
           cursor={cursor}
           cursorClassName={cursorClassName}
         />
-      </div>
+      </span>
     );
   }
 }
