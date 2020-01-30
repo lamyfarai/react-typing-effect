@@ -43,6 +43,7 @@ http://burnmind.com/tutorials/how-to-create-a-typing-effect-an-eraser-effect-and
   * `staticText`: `String`. Text that will just be static and cannot be typed or erased.
   * `className`: `String`
   * `speed`: `Number`. default `500`ms. Typing speed.
-  * `eraseDelay`: `Number`. default `5000`ms. Time to wait before erasing the text
+  * `eraseDelay`: `Number`. default `5000`ms. Time to wait before erasing the text.
+  * `typingDelay`: `Number`. default `2500`ms. Time to wait before starting to type.
   *  `cursor`: `String`. Default: `|`
   * `cursorClassName`: `String`
