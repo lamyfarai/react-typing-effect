@@ -1,11 +1,11 @@
 .babelrc
 .eslintrc
-postcss.config.js
+webpack.config.base.js
 webpack.config.js
+webpack.production.config.js
 src
 tools
 CODE_OF_CONDUCT.md
 screenshot.gif
-_server
+server.js
 _tools
-_webpack
