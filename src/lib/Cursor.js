@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 
 export default class Cursor extends Component {
-
   constructor(props) {
     super(props);
-    this.state = {
-      display: true
-    };
+    this.state = { display: true };
     this.animateCursor = this.animateCursor.bind(this);
   }
 
@@ -27,12 +23,13 @@ export default class Cursor extends Component {
   }
 
   render() {
-    const { cursorClassName, cursor } = this.props;
+    const { className, cursor, cursorRenderer, } = this.props;
     const { display } = this.state;
-    const classes = cx(cursorClassName, 'lfm__typing_effect_cursor');
+    const _cusor = cursor || '|';
+
     return (
-      <span className={classes} style={getStyles(display)}>
-        {cursor || "|"}
+      <span className={className} style={getStyles(display)}>
+        {cursorRenderer ? cursorRenderer(_cusor) : _cusor}
       </span>
     );
   }
@@ -40,6 +37,7 @@ export default class Cursor extends Component {
 
 const getStyles = (display = true) => {
   return {
+    display: 'inline-block',
     MsTransition: "opacity 0.5s",
     WebkitTransition: "opacity 0.5s",
     MozTransition: "opacity 0.5s",
@@ -50,5 +48,6 @@ const getStyles = (display = true) => {
 
 Cursor.propTypes = {
   cursor: PropTypes.string,
-  cursorClassName: PropTypes.string
+  className: PropTypes.string,
+  cursorRenderer: PropTypes.func,
 };

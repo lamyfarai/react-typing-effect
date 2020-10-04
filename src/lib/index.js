@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 
 import Cursor from './Cursor';
 
 export default class TypingEffect extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -80,25 +78,29 @@ export default class TypingEffect extends Component {
       eraseDelay,
       staticText,
       text,
-      className,
       cursor,
+      displayTextRenderer,
       cursorClassName,
+      cursorRenderer,
       ...otherProps
     } = this.props;
-    const { displayText } = this.state;
-    const classes = cx(className, 'lfm__typing_effect');
+    const { displayText, index } = this.state;
+
     return (
-      <span {...otherProps} className={classes}>
+      <span {...otherProps}>
         {staticText ?
-          <span className="lfm__typing_effect_static_text">
+          <span>
             {staticText}&nbsp;
           </span> : null}
 
-        <span className="lfm__typing_effect_text">{displayText}</span>
+        <div
+          style={{ display: 'inline-block' }}
+        >{displayTextRenderer ? displayTextRenderer(displayText, index) : displayText}</div>
 
         <Cursor
           cursor={cursor}
-          cursorClassName={cursorClassName}
+          cursorRenderer={cursorRenderer}
+          className={cursorClassName}
         />
       </span>
     );
@@ -118,8 +120,9 @@ TypingEffect.propTypes = {
   typingDelay: PropTypes.number.isRequired,
   eraseDelay: PropTypes.number.isRequired,
   staticText: PropTypes.string,
-  text: PropTypes.oneOfType([PropTypes.array, PropTypes.string]).isRequired,
-  className: PropTypes.string,
+  text: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]).isRequired,
   cursor: PropTypes.string,
-  cursorClassName: PropTypes.string
+  cursorClassName: PropTypes.string,
+  displayTextRenderer: PropTypes.func,
+  cursorRenderer: PropTypes.func,
 };

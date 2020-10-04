@@ -20,9 +20,33 @@ import ReactTypingEffect from 'react-typing-effect';
 
 const ReactTypingEffectDemo = () => {
   return (
-    <ReactTypingEffect
-      text="Hello." //text=["Hello.", "World!"]
-    />
+    <>
+      <ReactTypingEffect
+        text=["Hello.", "World!"]
+      />
+
+      <br />
+
+      <ReactTypingEffect
+        text={["Hello.", "World!!!"]}
+        cursorRenderer={cursor => <h1>{cursor}</h1>}
+        displayTextRenderer={(text, i) => {
+          return (
+            <h1>
+              {text.split('').map((char, i) => {
+                const key = `${i}`;
+                return (
+                  <span
+                    key={key}
+                    style={i%2 === 0 ? { color: 'magenta'} : {}}
+                  >{char}</span>
+                );
+              })}
+            </h1>
+          );
+        }}        
+      />
+    </>
   );
 };
 ```
@@ -40,6 +64,7 @@ http://burnmind.com/tutorials/how-to-create-a-typing-effect-an-eraser-effect-and
 
 ### Other Props
 
+  * `displayTextRenderer`: `func`. `(displayText: string, textIndex: number) => element` If `text` propType is `array`, then `textIndex` will be the `array index` of the text, otherwise `textIndex` will be equal to `0`.  
   * `staticText`: `String`. Text that will just be static and cannot be typed or erased.
   * `className`: `String`
   * `speed`: `Number`. default `500`ms. Typing speed.

@@ -1,6 +1,6 @@
 {
   "name": "react-typing-effect",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Simulates typing effect, eraser effect and blinking cursor.",
   "main": "dist/index.js",
   "scripts": {
@@ -22,9 +22,8 @@
   },
   "homepage": "https://github.com/lamyfarai/react-typing-effect#readme",
   "dependencies": {
-    "classnames": "^2.2.5",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.3",
