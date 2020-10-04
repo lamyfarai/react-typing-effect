@@ -67,7 +67,7 @@ export default class TypingEffect extends Component {
       this.setState({ displayText }, () => {
         this._timeout = setTimeout(() => {
           this.erase();
-        }, this.props.speed);
+        }, this.props.eraseSpeed);
       });
     }
   }
@@ -75,6 +75,7 @@ export default class TypingEffect extends Component {
   render() {
     const {
       speed,
+      eraseSpeed,
       typingDelay,
       eraseDelay,
       staticText,
@@ -106,12 +107,14 @@ export default class TypingEffect extends Component {
 
 TypingEffect.defaultProps = {
   speed: 200,
+  eraseSpeed: 200,
   eraseDelay: 5000,
   typingDelay: 2500
 };
 
 TypingEffect.propTypes = {
   speed: PropTypes.number.isRequired,
+  eraseSpeed: PropTypes.number.isRequired,
   typingDelay: PropTypes.number.isRequired,
   eraseDelay: PropTypes.number.isRequired,
   staticText: PropTypes.string,
