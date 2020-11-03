@@ -22,7 +22,7 @@ const ReactTypingEffectDemo = () => {
   return (
     <>
       <ReactTypingEffect
-        text=["Hello.", "World!"]
+        text={["Hello.", "World!"]}
       />
 
       <br />

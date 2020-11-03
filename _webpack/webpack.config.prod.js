@@ -23,7 +23,8 @@ export default {
     libraryTarget: 'umd',
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
-    filename: '[name].js'
+    filename: '[name].js',
+    globalObject: "this"
   },
   devServer: { contentBase: path.resolve(__dirname, '../dist') },
   resolve: { symlinks: false },
