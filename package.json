@@ -46,7 +46,7 @@
     "expect": "^22.0.3",
     "express": "^4.16.3",
     "file-loader": "^1.1.11",
-    "jsdom": "^9.5.0",
+    "jsdom": "^16.5.0",
     "mocha": "^4.1.0",
     "npm-run-all": "^4.1.2",
     "postcss-loader": "^2.1.3",
