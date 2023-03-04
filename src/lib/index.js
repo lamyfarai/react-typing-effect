@@ -46,9 +46,11 @@ export default class TypingEffect extends Component {
         }, this.props.speed);
       });
     } else {
-      this._timeout = setTimeout(() => {
-        this.erase();
-      }, this.props.eraseDelay);
+      if(this.props.eraseEnabled){
+        this._timeout = setTimeout(() => {
+          this.erase();
+        }, this.props.eraseDelay);
+      }
     }
   }
 
@@ -76,6 +78,7 @@ export default class TypingEffect extends Component {
       eraseSpeed,
       typingDelay,
       eraseDelay,
+      eraseEnabled,
       staticText,
       text,
       cursor,
@@ -111,7 +114,8 @@ TypingEffect.defaultProps = {
   speed: 200,
   eraseSpeed: 200,
   eraseDelay: 5000,
-  typingDelay: 2500
+  typingDelay: 2500,
+  eraseEnabled: true 
 };
 
 TypingEffect.propTypes = {
@@ -119,6 +123,7 @@ TypingEffect.propTypes = {
   eraseSpeed: PropTypes.number.isRequired,
   typingDelay: PropTypes.number.isRequired,
   eraseDelay: PropTypes.number.isRequired,
+  eraseEnabled: React.PropTypes.bool.isRequired,
   staticText: PropTypes.string,
   text: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]).isRequired,
   cursor: PropTypes.string,
